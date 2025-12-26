@@ -1,3 +1,40 @@
+### Episode 1
+
+- **Monolith vs Microservices**
+
+- **Development Speed**
+- Monolith its slower whereas in Microservices Its faster because in Monolith we work on single repo code reviews becomes slower (there is a huge debate on this)
+
+- **Scalability**
+- very tough in monorepo,small services scaling is easy.
+
+- **Deployement**
+- separate separate deployement for microservices,single deployment in Monorepo
+
+- **Tech Stacks**
+- we can use diffrence Tech Stacks in microservice architecture
+
+- **Infra Cost**
+- Infra cosr higher in microservice because separate separate services for each repo
+
+- **Complexity**
+- complexity high for small project in microservice for larger projects higher for monorepo
+
+- **Fault Isolation**
+- if any small thing crash in monolith complete app crashed,but in microservice only that service will be crashed.
+
+- **Testing**
+- we can write separate Test cases in microservice but writing end to end test cases in very tough
+
+- **Ownership**
+- separate separate ownership for microservices,central ownership in monorepo
+
+- **Maintainence & Rewarmps**
+- its easy in microservice small service only so we can Rewarmp it if we want,but monorepo its difficult
+
+- **Debugging**
+- its tough for both,there will blaming also like your service faulty etc..,but monorepo silghltly easier
+
 ### Episode 3
 
 - create a repository
