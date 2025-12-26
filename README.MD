@@ -1,7 +1,7 @@
 ### Episode 3
 
 - create a repository
-- Initialize the respository
+- Initialize the repository
 - node_modules,package.json,package.lock.json
 - create the server
 - listen to the server
