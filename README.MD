@@ -101,22 +101,6 @@
  app.use(
   "/user",
   (req, res, next) => {
-  console.log("Request URL:", req.originalUrl);
-  res.send("User Info 1");
-  next();
-  },
-  (req, res) => {
-  res.send("User Info 2");
-  },
-  );
-```
-
-- **Case 1**
-
-```
-app.use(
-  "/user",
-  (req, res, next) => {
     console.log("Request URL:", req.originalUrl);
     res.send("User Info 1");
     next();
@@ -128,6 +112,22 @@ app.use(
 ```
 
 - **Case 2**
+
+```
+app.use(
+  "/user",
+  (req, res, next) => {
+    console.log("Request URL:", req.originalUrl);
+    next();
+    res.send("User Info 1");
+  },
+  (req, res) => {
+    res.send("User Info 2");
+  }
+);
+```
+
+- **Case 3**
 
 ```
  app.use(
