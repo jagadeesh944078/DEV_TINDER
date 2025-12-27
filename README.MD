@@ -89,3 +89,20 @@
 - we can use postman to test the api's.
 
 - **app.use will match the all HTTP methods to test**
+
+### Episode 5
+
+- in below code you can see mulitple arguments,first one is router, second one is route handler, even you can pass multiple route handlers as arguments
+-      app.use("/user", (req, res) => {res.send("hello server")}, () => {})
+- **Case 1**
+-                app.use(
+  "/user",
+  (req, res, next) => {
+  console.log("Request URL:", req.originalUrl);
+  res.send("User Info");
+  next();
+  },
+  (req, res) => {
+  res.send("User Info");
+  },
+  );
