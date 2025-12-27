@@ -142,7 +142,7 @@ app.use(
 );
 ```
 
-- **Case 3**
+- **Case 4**
 
 ```
 app.use(
