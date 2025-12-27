@@ -95,18 +95,70 @@
 - in below code you can see mulitple arguments,first one is router, second one is route handler, even you can pass multiple route handlers as arguments
 -      app.use("/user", (req, res) => {res.send("hello server")}, () => {})
 
-```
-**Case 1**
+- **Case 1**
 
+```
  app.use(
   "/user",
   (req, res, next) => {
   console.log("Request URL:", req.originalUrl);
-  res.send("User Info");
+  res.send("User Info 1");
   next();
   },
   (req, res) => {
-  res.send("User Info");
+  res.send("User Info 2");
   },
   );
+```
+
+- **Case 1**
+
+```
+app.use(
+  "/user",
+  (req, res, next) => {
+    console.log("Request URL:", req.originalUrl);
+    res.send("User Info 1");
+    next();
+  },
+  (req, res) => {
+    res.send("User Info 2");
+  }
+);
+```
+
+- **Case 2**
+
+```
+ app.use(
+  "/user",
+  (req, res, next) => {
+    console.log("Request URL:", req.originalUrl);
+    next();
+  },
+  (req, res) => {
+    res.send("User Info 2");
+  }
+);
+```
+
+- **Case 3**
+
+```
+app.use(
+  "/user",
+  (req, res, next) => {
+    console.log("Request URL:", req.originalUrl);
+    next();
+  },
+  (req, res, next) => {
+    next();
+  },
+  (req, res, next) => {
+    next();
+  },
+  (req, res, next) => {
+    next();
+  }
+);
 ```
