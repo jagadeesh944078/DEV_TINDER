@@ -94,10 +94,11 @@
 
 - in below code you can see mulitple arguments,first one is router, second one is route handler, even you can pass multiple route handlers as arguments
 -      app.use("/user", (req, res) => {res.send("hello server")}, () => {})
-- **Case 1**
 
 ```
-- app.use(
+**Case 1**
+
+ app.use(
   "/user",
   (req, res, next) => {
   console.log("Request URL:", req.originalUrl);
