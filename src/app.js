@@ -20,7 +20,7 @@ app.post("/signup", async (req, res) => {
 });
 
 // Get user by Id
-app.post("/user/id", async (req, res) => {
+app.post("/user", async (req, res) => {
   try {
     const { _id } = req.body;
     console.log(_id);
@@ -62,10 +62,22 @@ app.delete("/user", async (req, res) => {
 });
 
 // update the user
-app.patch("/user", async (req, res) => {
+app.patch("/user/:userId", async (req, res) => {
   try {
-    const { _id, ...updatedData } = req.body;
-    const user = await User.findByIdAndUpdate(_id, updatedData, {
+    const { userId } = req.params;
+    const data = req.body;
+    const ALLOWED_UPDATES = ["photourl", "about", "gender", "age", "skills"];
+    const isUpdateValid = Object.keys(data).every((key) =>
+      ALLOWED_UPDATES.includes(key)
+    );
+    console.log(isUpdateValid, "isUpdateValid");
+    if (!isUpdateValid) {
+      throw new Error("Invalid updates!");
+    }
+    if (data.skills && data.skills.length > 10) {
+      throw new Error("Skills cannot exceed 10 items");
+    }
+    const user = await User.findByIdAndUpdate(userId, data, {
       new: true,
       runValidators: true,
     });

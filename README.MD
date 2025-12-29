@@ -274,3 +274,5 @@ app.get("/user", (req, res) => {
 - create custom validate function for gender
 - Improve the DB Schema - PUT all approriate validations on each field in Schema
 - add timestamps to the userschema
+- App API Level Validation on patch request & signup post api
+- Data santitizing - Add Api level validation for each field
