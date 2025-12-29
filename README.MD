@@ -92,6 +92,17 @@
 
 ### Episode 5
 
+- multiple route handlers play with code
+- next()
+- next function and errors along with res.send()
+- app.use("/route", rh1, rh2, rh3, rh4, rh5);
+- what is middleware
+- how to expressjs basically handles requests behind the scenes
+- diffrence between app.all & app.use
+- write a dummy auth middleware for admin
+- write a dummy auth middleware for all user routes except /user/login
+- error handling using app.use("/", (err,req,res,next) => {})
+
 - in below code you can see mulitple arguments,first one is router, second one is route handler, even you can pass multiple route handlers as arguments
 -      app.use("/user", (req, res) => {res.send("hello server")}, () => {})
 
@@ -162,3 +173,60 @@ app.use(
   }
 );
 ```
+
+- **Case 5**
+- **you can can send all route handler inside array or 2 in one array and remaining as it is,here also it will work same as without arrays**
+
+```
+app.use(
+  "/user",
+  [(req, res, next) => {
+    console.log("Request URL:", req.originalUrl);
+    next();
+  },
+  (req, res, next) => {
+    next();
+  },
+  (req, res, next) => {
+    next();
+  },
+  (req, res, next) => {
+    next();
+  }
+  (req, res) => {
+    res.send("hello from 5th server)
+  }]
+);
+```
+
+**Case 6**
+
+- **it will go to next route and print User Info GET Method2**
+
+```
+app.get("/user", (req, res) => {
+  next();
+});
+
+app.get("/user", (req, res) => {
+  res.send("User Info GET Method2");
+});
+```
+
+**Case 7**
+
+- **it will not even go to second route because these are separate routes**
+
+```
+app.get("/user", (req, res) => {
+  res.send("User Info GET Method2");
+});
+
+app.get("/user", (req, res) => {
+  next();
+});
+
+
+```
+
+- **The functions you put in the middle called as middleware**
