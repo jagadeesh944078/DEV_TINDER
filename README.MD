@@ -230,3 +230,19 @@ app.get("/user", (req, res) => {
 ```
 
 - **The functions you put in the middle called as middleware**
+
+### Episode 6
+
+- create a free cluster on MongoDb official website(Mongo atlas)
+- Install mongoose library
+- connect your application to the Database "Connection-url"/devTinder, here devTinder is database name
+- call the connectDB function and connect to the database before starting application on 7777
+- Create a userschema & user model
+- Create /signup api to add data to database
+- push some documents using api calls from postman
+- error handling using try, catch
+
+- we use mongoose to talk to the datebase,so to create models,schema's we use mongoose
+- refer documentation for creating schemas
+- before storing anything in the collection you have to create schema for collection
+- schema means what are the all thing you stored in that particular collection(user collection)
