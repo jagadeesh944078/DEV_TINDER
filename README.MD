@@ -252,6 +252,15 @@ app.get("/user", (req, res) => {
 - diffrence between js obj vs JSON
 - add the express.json() middleware to your app
 - make your signup api dynamic to receive data from the end user
+- user.findone with duplicate email ids, which email object returned
+- API - Get User by Email
+- API - Feed API - GET/feed - get all the users from the database
+- API - Get User by Id
+- Create A delete user api
+- API - Update a user
+- Explore mongoose documentation for Model methods
+- what are the options in model.findoneandupdate method, explore more about it.
+- API - update the user with email id
 
 - we have req, res right in request handler that is express given to us in object format to use it.
 - the data you sent is part of that req object only.
