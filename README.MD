@@ -246,3 +246,13 @@ app.get("/user", (req, res) => {
 - refer documentation for creating schemas
 - before storing anything in the collection you have to create schema for collection
 - schema means what are the all thing you stored in that particular collection(user collection)
+
+### Episode 7
+
+- diffrence between js obj vs JSON
+- add the express.json() middleware to your app
+- make your signup api dynamic to receive data from the end user
+
+- we have req, res right in request handler that is express given to us in object format to use it.
+- the data you sent is part of that req object only.
+- to convert data to javascript object we use app.use(express.json())

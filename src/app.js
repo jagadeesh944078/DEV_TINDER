@@ -6,16 +6,11 @@ const User = require("./models/user");
 //creating instance of express
 const app = express();
 
+// no need to pass any route, it will be applied to all routes
+app.use(express.json());
+
 app.post("/signup", async (req, res) => {
-  const userObj = {
-    firstName: "Jagadeesh",
-    lastName: "Vemula",
-    emailId: "vemulajagadeesh26@gmail.com",
-    age: 26,
-    password: "Abcd@1234",
-    gender: "male",
-  };
-  const user = new User(userObj);
+  const user = new User(req.body);
   try {
     await user.save();
     res.send("User signed up successfully");
