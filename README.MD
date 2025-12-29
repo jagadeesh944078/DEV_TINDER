@@ -265,3 +265,12 @@ app.get("/user", (req, res) => {
 - we have req, res right in request handler that is express given to us in object format to use it.
 - the data you sent is part of that req object only.
 - to convert data to javascript object we use app.use(express.json())
+
+### Episode 8
+
+- Explore schematype options from the documentation
+- add required,min,max,etc..
+- add default value
+- create custom validate function for gender
+- Improve the DB Schema - PUT all approriate validations on each field in Schema
+- add timestamps to the userschema
