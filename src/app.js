@@ -70,7 +70,6 @@ app.patch("/user/:userId", async (req, res) => {
     const isUpdateValid = Object.keys(data).every((key) =>
       ALLOWED_UPDATES.includes(key)
     );
-    console.log(isUpdateValid, "isUpdateValid");
     if (!isUpdateValid) {
       throw new Error("Invalid updates!");
     }

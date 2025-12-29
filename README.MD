@@ -276,3 +276,6 @@ app.get("/user", (req, res) => {
 - add timestamps to the userschema
 - App API Level Validation on patch request & signup post api
 - Data santitizing - Add Api level validation for each field
+- Install validator
+- Explore Validator library function and use validator function for email,password etc..
+- NEVER TRUST req.body
