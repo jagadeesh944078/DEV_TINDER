@@ -285,3 +285,5 @@ app.get("/user", (req, res) => {
 - validate data in signup api
 - Install bcrypt package
 - create Passwordhash using bcrypt.hash & save the user with encrypted password
+- create login api
+- compare password and throw errors if email or password is invalid
