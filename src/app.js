@@ -2,6 +2,8 @@ const express = require("express");
 const { adminAuth } = require("./middleware/auth");
 const connectDB = require("./config/database");
 const User = require("./models/user");
+const { validationSignup } = require("./utils/validation");
+const bcrypt = require("bcrypt");
 
 //creating instance of express
 const app = express();
@@ -10,12 +12,15 @@ const app = express();
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  const user = new User(req.body);
   try {
+    validationSignup(req.body);
+    const passwordHash = await bcrypt.hash(req.body.password, 10);
+    const userData = { ...req.body, password: passwordHash };
+    const user = new User(userData);
     await user.save();
     res.send("User signed up successfully");
   } catch (err) {
-    res.status(500).send("Error signing up user: " + err.message);
+    res.status(400).send("ERROR: " + err.message);
   }
 });
 

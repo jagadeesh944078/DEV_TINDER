@@ -279,3 +279,9 @@ app.get("/user", (req, res) => {
 - Install validator
 - Explore Validator library function and use validator function for email,password etc..
 - NEVER TRUST req.body
+
+### Episode 9
+
+- validate data in signup api
+- Install bcrypt package
+- create Passwordhash using bcrypt.hash & save the user with encrypted password
