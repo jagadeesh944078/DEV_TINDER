@@ -79,7 +79,6 @@ app.post("/sendConnectionRequest", userAuth, (req, res) => {
 app.post("/user", async (req, res) => {
   try {
     const { _id } = req.body;
-    console.log(_id);
     const user = await User.findById(_id);
     res.send(user);
     if (!user) {

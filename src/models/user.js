@@ -65,6 +65,7 @@ const userSchema = new mongoose.Schema(
 );
 
 // here you have to write normal function only not arrow function because arrow function do not bind this keyword
+// this method is instance method of userSchema
 userSchema.methods.getJwt = async function () {
   const user = this;
   const token = await jwt.sign({ _id: user._id }, "jagadeesh#$%@!9627", {
