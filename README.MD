@@ -296,5 +296,8 @@ app.get("/user", (req, res) => {
 - install json webtoken
 - in login api after email & password validation create JWT token. and send it to user in cookies
 - read the cookies inside your profile api and find the logged in user
+- create userAuth middleware
+- add userauth middleware in profile api and a new sendconnectionrequest api
+- set the expiry of jwt token and cookies to 7days
 
 - if user sends any request it will create the connection that is TCP/IP connection once server sends back data connection will be closed.
