@@ -4,12 +4,15 @@ const connectDB = require("./config/database");
 const User = require("./models/user");
 const { validationSignup } = require("./utils/validation");
 const bcrypt = require("bcrypt");
+const cookie = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 //creating instance of express
 const app = express();
 
 // no need to pass any route, it will be applied to all routes
 app.use(express.json());
+app.use(cookie());
 
 app.post("/signup", async (req, res) => {
   try {
@@ -35,9 +38,30 @@ app.post("/login", async (req, res) => {
     if (!isPasswordMatch) {
       throw new Error("Invalid Credentials");
     }
+    const token = jwt.sign({ _id: user._id }, "jagadeesh#$%@!9627");
+    res.cookie("token", token);
     res.send("User logged in successfully");
   } catch (err) {
     res.status(400).send("ERROR: " + err.message);
+  }
+});
+
+app.get("/profile", async (req, res) => {
+  try {
+    const cookies = req.cookies;
+    const { token } = cookies;
+    if (!token) {
+      throw new Error("No Token Found");
+    }
+    const decoded = jwt.verify(token, "jagadeesh#$%@!9627");
+    const user = await User.findById(decoded._id);
+    const { _id } = decoded;
+    if (!_id) {
+      throw new Error("Invalid Token");
+    }
+    res.send("profile login successful");
+  } catch (err) {
+    res.status(401).send("ERROR: " + err.message);
   }
 });
 

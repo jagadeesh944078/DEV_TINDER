@@ -287,3 +287,14 @@ app.get("/user", (req, res) => {
 - create Passwordhash using bcrypt.hash & save the user with encrypted password
 - create login api
 - compare password and throw errors if email or password is invalid
+
+### Episode 10
+
+- install cookie parser
+- send dummy cookie to the user
+- create /GET api and check if you get the cookie back
+- install json webtoken
+- in login api after email & password validation create JWT token. and send it to user in cookies
+- read the cookies inside your profile api and find the logged in user
+
+- if user sends any request it will create the connection that is TCP/IP connection once server sends back data connection will be closed.
