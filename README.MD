@@ -299,5 +299,7 @@ app.get("/user", (req, res) => {
 - create userAuth middleware
 - add userauth middleware in profile api and a new sendconnectionrequest api
 - set the expiry of jwt token and cookies to 7days
+- create userschema method to getJwt()
+- create userschema method to comparepassword(passwordInputByUser)
 
 - if user sends any request it will create the connection that is TCP/IP connection once server sends back data connection will be closed.
