@@ -308,3 +308,7 @@ app.get("/user", (req, res) => {
 
 - Explore Tinder API
 - Create a list all api you can think of in dev tinder
+- Read Documentation for express.router
+- create routes folder for managing auth,profile, request routers
+- create authRouter,profileRouter,requestRouter
+- import these routers in app.js
