@@ -303,3 +303,8 @@ app.get("/user", (req, res) => {
 - create userschema method to comparepassword(passwordInputByUser)
 
 - if user sends any request it will create the connection that is TCP/IP connection once server sends back data connection will be closed.
+
+### Episode 11
+
+- Explore Tinder API
+- Create a list all api you can think of in dev tinder
