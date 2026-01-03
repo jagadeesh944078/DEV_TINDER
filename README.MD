@@ -312,3 +312,6 @@ app.get("/user", (req, res) => {
 - create routes folder for managing auth,profile, request routers
 - create authRouter,profileRouter,requestRouter
 - import these routers in app.js
+- Create POST /logout api
+- Create PATCH /profile/edit
+- Create PATCH /profile/password API - forgot password api

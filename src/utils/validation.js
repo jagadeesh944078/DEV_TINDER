@@ -13,4 +13,20 @@ const validationSignup = (userObj) => {
   }
 };
 
-module.exports = { validationSignup };
+const validationEditProfile = (profileObj) => {
+  const allowedFields = [
+    "firstName",
+    "lastName",
+    "age",
+    "gender",
+    "photoUrl",
+    "about",
+    "skills",
+  ];
+  const isEditAllowed = Object.keys(profileObj).every((field) =>
+    allowedFields.includes(field)
+  );
+  return isEditAllowed;
+};
+
+module.exports = { validationSignup, validationEditProfile };
