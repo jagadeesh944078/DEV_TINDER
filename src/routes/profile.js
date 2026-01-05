@@ -4,6 +4,7 @@ const profileRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const { validationEditProfile } = require("../utils/validation");
+const bcrypt = require("bcrypt");
 
 profileRouter.get("/profile/view", userAuth, async (req, res) => {
   try {
@@ -38,4 +39,24 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
   }
 });
 
+profileRouter.patch("/profile/forgotPassword", userAuth, async (req, res) => {
+  try {
+    const loggedInUser = req.user;
+    const { emailId, password, newPassword } = req.body;
+    const user = await User.findOne({ emailId: emailId });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const isPasswordMatch = await user.validatePassword(password);
+    if (!isPasswordMatch) {
+      throw new Error("Current Password is incorrect");
+    }
+    const newPasswordHash = await bcrypt.hash(newPassword, 10);
+    loggedInUser.password = newPasswordHash;
+    await loggedInUser.save();
+    res.send("Password Updated Successfully");
+  } catch (err) {
+    res.status(400).send("ERROR: " + err.message);
+  }
+});
 module.exports = profileRouter;
