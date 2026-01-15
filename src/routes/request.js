@@ -32,14 +32,14 @@ requestRouter.post(
 
       const existingRequest = await ConnectionRequest.findOne({
         $or: [
-          ({
+          {
             fromUserId: fromUserId,
             toUserId: toUserId,
           },
           {
             fromUserId: toUserId,
             toUserId: fromUserId,
-          }),
+          },
         ],
       });
       if (existingRequest) {
@@ -53,9 +53,56 @@ requestRouter.post(
         toUserId: toUserId,
         status: status,
       });
+      console.log(connectionRequest, "connectionRequest");
       await connectionRequest.save();
       res.send({
         message: "Connection Request Sent Successfully",
+        data: connectionRequest,
+      });
+    } catch (err) {
+      res.status(400).send("Error: " + err.message);
+    }
+  }
+);
+
+requestRouter.post(
+  "/request/review/:status/:requestId",
+  userAuth,
+  async (req, res) => {
+    try {
+      const loggedInUser = req.user;
+      const status = req.params.status;
+      const requestId = req.params.requestId;
+      console.log(
+        status,
+        requestId,
+        loggedInUser._id,
+        "status, requestId, loggedInUser"
+      );
+      const allowedStatuses = ["accepted", "rejected"];
+      if (!allowedStatuses.includes(status)) {
+        return res
+          .status(400)
+          .json({ message: "Invalid Status Type:" + status });
+      }
+      if (!mongoose.Types.ObjectId.isValid(requestId)) {
+        return res.status(400).json({ message: "Invalid Request Id" });
+      }
+      const connectionRequest = await ConnectionRequest.findOne({
+        _id: requestId,
+        toUserId: loggedInUser._id,
+        status: "interested",
+      });
+      console.log(connectionRequest, "connectionRequest");
+      if (!connectionRequest) {
+        return res
+          .status(400)
+          .json({ message: "Connection Request not found" });
+      }
+      connectionRequest.status = status;
+      await connectionRequest.save();
+      res.send({
+        message: "Connection Request Reviewed Successfully",
         data: connectionRequest,
       });
     } catch (err) {
