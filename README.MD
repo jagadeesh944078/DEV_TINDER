@@ -315,3 +315,17 @@ app.get("/user", (req, res) => {
 - Create POST /logout api
 - Create PATCH /profile/edit
 - Create PATCH /profile/password API - forgot password api
+
+## episode 12
+
+- Create connectionrequest schema
+- send connection request api
+- proper validation of data
+- think about all corner cases
+- $or and $and query in mongoose - https://www.mongodb.com/docs/manual/reference/mql/query-predicates/logical/
+- schema.pre("save") function
+- Read more about indexes in MongoDB
+- why do we need index in DB?
+- what is advantage and disadvantage of creating index?
+- Read the article about compound indexes https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
+- ALWAYS THINK ABOUT CORNER CASES
