@@ -19,6 +19,6 @@
 
 ## userrouter
 
-- GET /user/connection
-- GET /user/requests
+- GET /user/connections
+- GET /user/request/received
 - GET /user/feed - Gets you the profiles of the router users on platform
